@@ -1,10 +1,9 @@
 package com.jaslina.dictionary.models;
 
-import com.sun.javafx.beans.IDProperty;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 /**
  * Created by Bajal on 8/29/2017.
@@ -34,7 +33,4 @@ public class Dictionary {
     public void setMeaning(List<String> meaning) {
         this.meaning = meaning;
     }
-
-
-
 }
