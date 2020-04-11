@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Registration</title>
+    <style>
+        input:focus {
+        outline: 0;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 1em;
+    }
+
+    :-moz-placeholder {
+        font-size: 1em;
+    }
+
+    ::-moz-placeholder {
+        font-size: 1em;
+    }
+
+    body {
+
+
+        background-size: cover;
+        font-family: Verdana;
+        fon-size: 0.9em;
+        background: #d3deea;
+    }
+
+    h1 {
+        font-family: "Abril Fatface", serif;
+        font-size: 1.6em;
+        color: #ededed;
+        text-align: center;
+        font-weight: normal;
+        text-shadow: -1px 0 #bfc0c0, 0 1px #bfc0c0, 1px 0 #bfc0c0, 0 -1px #bfc0c0;
+    }
+
+    #loginform {
+        width: 500px;
+        height: auto;
+        margin: 1% auto;
+    }
+
+    #inputlbl {
+        padding: 0px 0px 0px 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+    }
+
+    #loginform .inputsnlables:last-child {
+        border-bottom: none;
+    }
+
+    .inputsnlables {
+        font-family: "Lato", sans-serif;
+        color: #585959;
+        text-transform: uppercase;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        color: #767676;
+        padding: 20px 0px;
+        width: 100px;
+        float: left;
+        font-weight: bold;
+    }
+
+    input {
+        border: none;
+        padding: 20px 0px;
+        background: transparent;
+        width: 230px;
+        font-size: 0.9em;
+    }
+        .span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+         .btn {
+              background: #ededed;
+              padding: 15px 20px;
+              margin: 5px;
+              color: #585959;
+              font-family: "Lato", sans-serif;
+              text-transform: uppercase;
+              font-size: 0.6em;
+              letter-spacing: 1px;
+              border: 0;
+          }
+        .btn:hover {
+            background: #bfc0c0;
+            transition: all 0.4s ease-out;
+        }
+    </style>
+</head>
+<body>
+<div id="loginform">
+    <div th:if="${param.success}">
+        <div class="alert alert-info">You've successfully registered to our awesome app!</div>
+    </div>
+    <h1>Registration Form</h1>
+    <form th:action="@{/registration/user}" th:object="${user}" method="post">
+    <div id="inputlbl">
+        <div class="inputsnlables"><label>Username</label><input type="text" id="username" name="username" placeholder="SilviAB" /></div>
+        <div class="inputsnlables"><label>Email</label><input type="text" id="email" name="email" placeholder="silvia@gmail.com" /></div>
+        <div class="inputsnlables"><label>Password</label><input type="password" id="password" name="password" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Password</label><input type="password" id="passwordConfirm"  name="passwordConfirm" placeholder="******" /></div>
+    </div>
+    <div class="buttons">
+        <button class="btn" >Register</button>
+   </div>
+    </form>
+    <div class="span">
+    <span style="text-align: center">Want to go back? <a href="/" th:href="@{/}">Back</a></span>
+    </div>
+</div>
+</body>
+</html>
