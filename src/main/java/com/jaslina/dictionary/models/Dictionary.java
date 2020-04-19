@@ -1,22 +1,41 @@
 package com.jaslina.dictionary.models;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-/**
- * Created by Bajal on 8/29/2017.
- */
-
-@Document
+@Data
+@Entity
+@Table(name = "dictionary")
 public class Dictionary {
 
     @Id
-    private String _id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
 
-    public String word;
-    public List<String> meaning;
+
+    @Column(name = "word")
+    private String word;
+
+    @Column(name = "meaning")
+    private String mean;
+
+    @Column(name = "type")
+    private int type;
+
+   // public List<String> meaning;
+
+    public Dictionary() {
+
+    }
+
+    public Dictionary(String word, String mean, int type) {
+        this.word = word;
+        this.mean = mean;
+        this.type = type;
+    }
 
     public String getWord() {
         return word;
@@ -26,11 +45,20 @@ public class Dictionary {
         this.word = word;
     }
 
-    public List<String> getMeaning() {
-        return meaning;
+
+    public String getMean() {
+        return mean;
     }
 
-    public void setMeaning(List<String> meaning) {
-        this.meaning = meaning;
+    public void setMean(String mean) {
+        this.mean = mean;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

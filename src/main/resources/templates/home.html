@@ -258,6 +258,27 @@
         }
 
     </style>
+    <!-- JQuery -->
+    <script type="text/javascript" th:src="@{/js/jquery-3.2.0.min.js}"></script>
+    <!--Import https://www.devbridge.com/sourcery/components/jquery-autocomplete/#-->
+    <script type="text/javascript" th:src="@{/js/jquery.autocomplete.js}"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <script>
+        $(document).ready(function() {
+            $('#autocomplete-input').devbridgeAutocomplete({
+                serviceUrl: '/suggestion',
+                paramName: 'word',
+                minChars: 1,
+                autoSelectFirst: true,
+            });
+
+        });
+    </script>
 </head>
 <body>
 <div id="background"></div>
@@ -283,9 +304,9 @@
 </div>
 <div class="bottom">
     <p>Boo, looks like a ghost stole this page!</p>
-    <form class="search">
-        <input type="text" class="search-bar" placeholder="Search" />
-        <button type="submit" class="search-btn">
+    <form class="search" th:action="@{/search}">
+        <input type="text" class="search-bar" id="autocomplete-input"    name="word" placeholder="Search"  />
+        <button type="submit" class="search-btn" >
             <i class="fa fa-search"></i>
         </button>
     </form>

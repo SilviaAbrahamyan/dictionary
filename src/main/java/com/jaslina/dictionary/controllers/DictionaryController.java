@@ -1,26 +1,29 @@
 package com.jaslina.dictionary.controllers;
 
+
 import com.jaslina.dictionary.models.Dictionary;
 import com.jaslina.dictionary.services.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-/**
- * Created by Bajal on 8/29/2017.
- */
+
 @RestController
 public class DictionaryController {
 
     @Autowired
     public DictionaryService dictionaryService;
 
-    @RequestMapping("/search")
-    public List<String> searchMeaning(@RequestParam String word){
 
-        return dictionaryService.search(word);
+    @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public String searchMeaning(@RequestParam(name="word")  String word){
+
+        List<String> search = dictionaryService.search(word);
+        return search.toString();
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -28,6 +31,30 @@ public class DictionaryController {
 
         dictionaryService.add(dictionaryEntry);
     }
+
+
+
+  //  @RequestMapping(value = "/autocomplete", method = RequestMethod.GET)
+  //  @ResponseBody
+  //  public List<String> searchAutocomplete(@RequestParam(name="word")  String word){
+  //      List<String> search = dictionaryService.searchAutocomplete(word);
+  //      return search;
+   // }
+
+
+   /// @CrossOrigin(origins = "http://localhost:8080")
+   // @RequestMapping(value = "/autocomplete", method = RequestMethod.GET, produces = "application/json")
+   // @ResponseBody
+   // public List<String> searchAutocomplete(@RequestParam(name="word", required = false, defaultValue = "")  String word, HttpServletResponse response){
+   //     System.out.println("searchstr: " + word);
+   //     response.setStatus(HttpServletResponse.SC_OK);
+      //  List<String> search = null;
+      //  if (word.length() == 1) {
+      //      search = dictionaryService.searchAutocomplete(word);
+      //  }
+      //  response.setContentType("application/json");
+       // return search;
+   // }
 
 
 

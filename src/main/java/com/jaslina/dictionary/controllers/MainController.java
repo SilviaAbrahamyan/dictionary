@@ -6,8 +6,6 @@ package com.jaslina.dictionary.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -17,13 +15,13 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String root() {
-        return "search";
-    }
+  public String root() {
+      return "home";
+  }
 
-    @GetMapping("/search")
+    @GetMapping("/home")
     public String login(Model model) {
-        return "search";
+        return "home";
     }
 
 }
