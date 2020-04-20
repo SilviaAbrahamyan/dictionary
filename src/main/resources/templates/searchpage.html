@@ -70,7 +70,8 @@
     }
     .search-btn {
 
-        width: 50px;
+        position: absolute;
+        width: 30px;
         height: 32px;
         border: 1px solid #bfc0c0;
         background: #bfc0c0;
@@ -80,24 +81,26 @@
         font-size: 1em;
         outline: none;
     }
+    /*search style*/
+    .search-bar {
+        border: 1px solid #bfc0c0;
+        padding: 5px;
+        height: 20px;
+        margin-left: -30px;
+        width: 200px;
+        outline: none;
+        display: inline-block;
+    }
+    .center{
+        text-align: center;
+        width: 700px;
+        margin: 0 auto;
+    }
 </style>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-    var amount = 0;
-    function btnClickYes() {
-        amount += 1;
-        if (amount == 1){
-            var textbox = document.createElement('input');
-            textbox.type = 'text';
-            textbox.id = 'autocomplete-input'
-            document.getElementById("myDIV").appendChild(textbox);
-            amount = 1;
-        }
-    };
-</script>
 <script type="text/javascript">
     $(function() {
         $("#autocomplete-input").autocomplete({
@@ -106,15 +109,37 @@
     });
 </script>
 <body>
-
-<div class="filter-buttons">
-    <input type="button" value="Yes" class="search-btn" name="btn_yes" onclick="btnClickYes()"/>
-</div>
-<div id="myDIV"/>
+<div class="center">
+<form class="search" th:action="@{/search}">
+    <input type="text" class="search-bar" id="autocomplete-input"   name="word" placeholder="Գրել փնտրվող բառը"  />
+    <button type="submit" class="search-btn" >
+        <i class="fa fa-search"></i>
+    </button>
+</form>
     <table class="list list-view-filter">
-        <tr th:each="survey : ${survey}">
-            <p style="white-space: pre;" th:text="${survey}"></p>
+        <tr th:each="survey,iter  : ${survey}">
+        <th:block th:switch="${iter.index+1}">
+            <div th:case="'1'">
+                <p  style="white-space: pre;"  th:text="${iter.index+1} + ')բացատրություն ' + ${survey}"></p>
+            </div>
+            <div th:case="'2'">
+                <p style="white-space: pre;"  th:text="${iter.index+1} +')հոմանիշներ ' + ${survey}"></p>
+            </div>
+            <div th:case="'3'">
+                <p style="white-space: pre;"  th:text="${iter.index+1} +')հականիշներ ' + ${survey}"></p>
+            </div>
+            <div th:case="'4'">
+                <p style="white-space: pre;"  th:text="${iter.index+1} +')ռուսերեն թարգմանություն ' + ${survey}"></p>
+            </div>
+            <div th:case="'5'">
+                <p style="white-space: pre;"  th:text="${iter.index+1} +')անգլերեն թարգմանություն ' + ${survey}"></p>
+            </div>
+            <div th:case="'6'">
+                <p style="white-space: pre;"  th:text="${iter.index+1} +')դարձվածքներ ' + ${survey}"></p>
+            </div>
+        </th:block>
         </tr>
     </table>
+</div>
 </body>
 </html>

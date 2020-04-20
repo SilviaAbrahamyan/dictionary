@@ -115,15 +115,15 @@
     <h1>Login Form</h1>
     <form th:action="@{/login/user}" th:object="${user}" method="post">
     <div id="inputlbl">
-        <div class="inputsnlables"><label>Username</label><input type="text" name="username" placeholder="SilviAB" /></div>
-        <div class="inputsnlables"><label>Password</label><input type="password" name="password" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Օգտագործողի անունը</label><input type="text" name="username" placeholder="SilviAB" /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" name="password" placeholder="******" /></div>
     </div>
     <div class="buttons">
-        <button class="btn" >Login</button>
+        <button class="btn" >Մուտք</button>
     </div>
         </form>
     <div class="span">
-        <span style="text-align: center">Want to go back? <a href="/" th:href="@{/}">Back</a></span>
+        <span style="text-align: center">Ուզում էք վերադառնալ? <a href="/" th:href="@{/}">Վերադառնալ</a></span>
     </div>
 </div>
 </body>

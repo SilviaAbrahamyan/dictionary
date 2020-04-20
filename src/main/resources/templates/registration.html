@@ -116,17 +116,17 @@
     <h1>Registration Form</h1>
     <form th:action="@{/registration/user}" th:object="${user}" method="post">
     <div id="inputlbl">
-        <div class="inputsnlables"><label>Username</label><input type="text" id="username" name="username" placeholder="SilviAB" /></div>
-        <div class="inputsnlables"><label>Email</label><input type="text" id="email" name="email" placeholder="silvia@gmail.com" /></div>
-        <div class="inputsnlables"><label>Password</label><input type="password" id="password" name="password" placeholder="******" /></div>
-        <div class="inputsnlables"><label>Password</label><input type="password" id="passwordConfirm"  name="passwordConfirm" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Օգտագործողի անունը</label><input type="text" id="username" name="username" placeholder="SilviAB" /></div>
+        <div class="inputsnlables"><label>Էլ.Փոստ</label><input type="text" id="email" name="email" placeholder="silvia@gmail.com" /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="password" name="password" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="passwordConfirm"  name="passwordConfirm" placeholder="******" /></div>
     </div>
     <div class="buttons">
-        <button class="btn" >Register</button>
+        <button class="btn" >Գրանցվել</button>
    </div>
     </form>
     <div class="span">
-    <span style="text-align: center">Want to go back? <a href="/" th:href="@{/}">Back</a></span>
+    <span style="text-align: center">Ուզում էք վերադառնալ? <a href="/" th:href="@{/}">Վերադառնալ</a></span>
     </div>
 </div>
 </body>

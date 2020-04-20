@@ -275,7 +275,7 @@
 <div id="background"></div>
 
 <div class="top">
-    <h1>Wikipedia Viewer</h1>
+    <h1>Բացատրական բառարան</h1>
 </div>
 <div class="container">
     <div class="ghost-copy">
@@ -296,17 +296,17 @@
 <div class="bottom">
     <p>Boo, looks like a ghost stole this page!</p>
     <form class="search" th:action="@{/search}">
-        <input type="text" class="search-bar" id="autocomplete-input"    name="word" placeholder="Search"  />
+        <input type="text" class="search-bar" id="autocomplete-input"   name="word" placeholder="Գրել փնտրվող բառը"  />
         <button type="submit" class="search-btn" >
             <i class="fa fa-search"></i>
         </button>
     </form>
     <div class="buttons">
         <form action="#" th:action="@{/registration}" th:object="${registration}">
-        <button class="btn">Register</button>
+        <button class="btn">Գրանցում</button>
             </form>
         <form action="#" th:action="@{/login}" th:object="${login}">
-        <button class="btn">Login</button>
+        <button class="btn">Մուտք</button>
             </form>
     </div>
 
