@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-/**
- * Created by home on 4/9/2020.
- */
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {

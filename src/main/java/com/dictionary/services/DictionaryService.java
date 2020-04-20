@@ -43,7 +43,7 @@ private List<String> getMeaning(List<com.dictionary.models.Dictionary> d){
     List<String> stringList = new ArrayList<>();
     for (Iterator<com.dictionary.models.Dictionary> it = d.iterator(); it.hasNext(); ) {
         com.dictionary.models.Dictionary dictionary = it.next();
-        stringList.add(dictionary.getMean());
+        stringList.add(dictionary.getMean().replaceAll("<br>", "\n"));
     }
         return stringList;
 }

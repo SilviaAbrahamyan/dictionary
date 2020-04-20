@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<style>
+    body {
+        font-family: "Helvetica";
+        background: #d3deea;
+    }
+
+    .filter-buttons {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .list-view-button,
+    .grid-view-button {
+        color: white;
+        border: 1px solid white;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .list-view-button:hover,
+    .grid-view-button:hover {
+        background: white;
+        color: #0e2439;
+    }
+
+    .list-view-button {
+        margin-right: 10px;
+    }
+
+    .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    td {
+        background: #d3deea;;
+        color: black;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        transition: 0.3s;
+    }
+
+    .list.list-view-filter {
+        flex-direction: column;
+    }
+
+    .list.list-view-filter li {
+        padding: 10px;
+    }
+
+    .list.grid-view-filter {
+        flex-flow: row wrap;
+    }
+
+    .list.grid-view-filter td {
+        width: calc(50% - 210px);
+        padding: 100px;
+        margin-right: 10px;
+        text-align: center;
+    }
+    .search-btn {
+
+        width: 50px;
+        height: 32px;
+        border: 1px solid #bfc0c0;
+        background: #bfc0c0;
+        text-align: center;
+        color: #ededed;
+        cursor: pointer;
+        font-size: 1em;
+        outline: none;
+    }
+</style>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    var amount = 0;
+    function btnClickYes() {
+        amount += 1;
+        if (amount == 1){
+            var textbox = document.createElement('input');
+            textbox.type = 'text';
+            textbox.id = 'autocomplete-input'
+            document.getElementById("myDIV").appendChild(textbox);
+            amount = 1;
+        }
+    };
+</script>
+<script type="text/javascript">
+    $(function() {
+        $("#autocomplete-input").autocomplete({
+            source: "plantNamesAutocomplete",
+        });
+    });
+</script>
+<body>
+
+<div class="filter-buttons">
+    <input type="button" value="Yes" class="search-btn" name="btn_yes" onclick="btnClickYes()"/>
+</div>
+<div id="myDIV"/>
+    <table class="list list-view-filter">
+        <tr th:each="survey : ${survey}">
+            <p style="white-space: pre;" th:text="${survey}"></p>
+        </tr>
+    </table>
+</body>
+</html>
