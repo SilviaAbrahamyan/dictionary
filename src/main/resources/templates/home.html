@@ -197,6 +197,7 @@
             margin-left: -30px;
             width: 200px;
             outline: none;
+            display: inline-block;
         }
         .search-bar:focus {
             border: 1px solid #d3deea;
@@ -258,25 +259,16 @@
         }
 
     </style>
-    <!-- JQuery -->
-    <script type="text/javascript" th:src="@{/js/jquery-3.2.0.min.js}"></script>
-    <!--Import https://www.devbridge.com/sourcery/components/jquery-autocomplete/#-->
-    <script type="text/javascript" th:src="@{/js/jquery.autocomplete.js}"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-
-    <script>
-        $(document).ready(function() {
-            $('#autocomplete-input').devbridgeAutocomplete({
-                serviceUrl: '/suggestion',
-                paramName: 'word',
-                minChars: 1,
-                autoSelectFirst: true,
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#autocomplete-input").autocomplete({
+                source: "plantNamesAutocomplete",
             });
-
         });
     </script>
 </head>
