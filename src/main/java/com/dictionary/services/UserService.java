@@ -36,8 +36,10 @@ public class UserService {
 
 
     public void saveUser(User user, boolean updateMode) {
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        user.setConfirmPassword(new BCryptPasswordEncoder().encode(user.getPasswordConfirm()));
+        //user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setPassword(user.getPassword());
+       // user.setConfirmPassword(new BCryptPasswordEncoder().encode(user.getPasswordConfirm()));
+        user.setConfirmPassword(user.getPasswordConfirm());
         int i = 0;
         if (i == 0){
         user.setEnable(++i);

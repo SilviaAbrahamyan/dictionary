@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        body {
+            background: #d3deea;
+            width: 1020px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            font-size: 50px;
+        }
+        header {
+            background: #bfc0c0;
+            width: 100%;
+            border-radius: 12px;
+        }
+        .site-nav {
+            background-size: cover;
+            position: relative;
+            margin: 40px 0 0 0;
+            border-radius: 12px;
+        }
+        .site-nav li {
+            display: inline-block;
+            background: #585959;
+            border-radius: 12px;
+        }
+        .site-nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .site-nav a:hover {
+            background: #bfc0c0;
+            border-radius: 12px;
+        }
+        .show-description small {
+            opacity: 1;
+        }
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Իմ անձնական էջը</h1>
+   <h2> Բարև  <span th:text="${userName}"></span>! </h2>
+    <nav role='navigation' class="site-nav show">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

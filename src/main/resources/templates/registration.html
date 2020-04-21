@@ -61,12 +61,11 @@
     }
 
     label {
-        display: block;
-        font-size: 0.9em;
+
+        text-align: left;
         color: #767676;
         padding: 20px 0px;
-        width: 100px;
-        float: left;
+        width: 50px;
         font-weight: bold;
     }
 
@@ -76,6 +75,7 @@
         background: transparent;
         width: 230px;
         font-size: 0.9em;
+
     }
         .span {
             display: flex;
@@ -111,15 +111,23 @@
 <body>
 <div id="loginform">
     <div th:if="${param.success}">
-        <div class="alert alert-info">You've successfully registered to our awesome app!</div>
+        <div class="alert alert-info">Դուք հաջողությամբ գրանցվել եք</div>
     </div>
-    <h1>Registration Form</h1>
+    <div th:if="${param.username}">
+        <div class="alert alert-info">Օգտագործողի անունը գոյություն ունի, կրկին փորձեք</div>
+    </div>
+    <div th:if="${param.email}">
+        <div class="alert alert-info">Էլ.Փոստ գոյություն ունի, կրկին փորձեք</div>
+    </div>
+    <div th:if="${param.password}">
+        <div class="alert alert-info">Գաղտնաբառը համապատասխան չէ</div>
+    </div>
     <form th:action="@{/registration/user}" th:object="${user}" method="post">
     <div id="inputlbl">
-        <div class="inputsnlables"><label>Օգտագործողի անունը</label><input type="text" id="username" name="username" placeholder="SilviAB" /></div>
-        <div class="inputsnlables"><label>Էլ.Փոստ</label><input type="text" id="email" name="email" placeholder="silvia@gmail.com" /></div>
-        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="password" name="password" placeholder="******" /></div>
-        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="passwordConfirm"  name="passwordConfirm" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Օգտագործողի անունը</label><input type="text" id="username" name="username"  /></div>
+        <div class="inputsnlables"><label>Էլ.Փոստ</label><input type="text" id="email" name="email" /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="password" name="password"  /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" id="passwordConfirm"  name="passwordConfirm" /></div>
     </div>
     <div class="buttons">
         <button class="btn" >Գրանցվել</button>

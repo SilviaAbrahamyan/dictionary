@@ -62,12 +62,10 @@
         }
 
         label {
-            display: block;
-            font-size: 0.9em;
+
             color: #767676;
             padding: 20px 0px;
             width: 100px;
-            float: left;
             font-weight: bold;
         }
 
@@ -112,11 +110,18 @@
 </head>
 <body>
 <div id="loginform">
-    <h1>Login Form</h1>
+    <div th:if="${param.error}">
+        <div class="alert alert-danger">Սխալ անուն կամ գաղտնաբառ
+        </div>
+    </div>
+    <div th:if="${param.logout}">
+        <div class="alert alert-info">Դուք դուրս եք եկել</div>
+    </div>
     <form th:action="@{/login/user}" th:object="${user}" method="post">
+
     <div id="inputlbl">
-        <div class="inputsnlables"><label>Օգտագործողի անունը</label><input type="text" name="username" placeholder="SilviAB" /></div>
-        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" name="password" placeholder="******" /></div>
+        <div class="inputsnlables"><label>Անուն</label><input type="text" name="username"  /></div>
+        <div class="inputsnlables"><label>Գաղտնաբառ</label><input type="password" name="password"  /></div>
     </div>
     <div class="buttons">
         <button class="btn" >Մուտք</button>

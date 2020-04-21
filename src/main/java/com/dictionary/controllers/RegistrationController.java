@@ -40,20 +40,17 @@ public class RegistrationController {
         int loginSize = userService.findUserByUsername(user.getUsername()).size();
 
         if (loginSize > 0) {
-            bindingResult.rejectValue("username", "error.username",
-                    "This user name already exists");
+            return "redirect:/registration?username";
         }
 
         int emailSize = userService.findUserByEmail(user.getEmail()).size();
 
         if (emailSize > 0) {
-            bindingResult.rejectValue("email", "error.email",
-                    "This email already exists");
+            return "redirect:/registration?email";
         }
 
         if (!user.getPassword().equals(user.getPasswordConfirm())) {
-            bindingResult.rejectValue("passwordConfirm", "error.passwordConfirm",
-                    "Password confirmation does not match to password");
+            return "redirect:/registration?password";
         }
 
         if (bindingResult.hasErrors()) {
@@ -66,7 +63,7 @@ public class RegistrationController {
         model.addAttribute("user", new User());
         model.put("successMessage", "User has been registered successfully");
 
-        //return "redirect:/registration?success";
-        return "redirect:/login";
+        return "redirect:/registration?success";
+
     }
 }
