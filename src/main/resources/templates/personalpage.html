@@ -6,17 +6,22 @@
     <style>
         body {
             background: #d3deea;
-            width: 1020px;
+            width: 700px;
             margin: 0 auto;
         }
         h1 {
-            color: white;
+            color: #ededed;
+            text-align: center;
             font-size: 50px;
+            font-family: "Abril Fatface", serif;
+            font-weight: normal;
+            text-shadow: -1px 0 #bfc0c0, 0 1px #bfc0c0, 1px 0 #bfc0c0, 0 -1px #bfc0c0;
+
         }
         header {
-            background: #bfc0c0;
-            width: 100%;
-            border-radius: 12px;
+            padding: 0px 0px 0px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
         }
         .site-nav {
             background-size: cover;
@@ -26,24 +31,35 @@
         }
         .site-nav li {
             display: inline-block;
-            background: #585959;
+            background: #ededed;
             border-radius: 12px;
         }
         .site-nav a {
             display: inline-block;
-            color: white;
+            background: #ededed;
+            font-family: "Lato", sans-serif;
             text-decoration: none;
             padding: 10px;
+            text-transform: uppercase;
+            font-size: 0.6em;
+            letter-spacing: 1px;
         }
         .site-nav a:hover {
             background: #bfc0c0;
-            border-radius: 12px;
+            transition: all 0.4s ease-out;
         }
         .show-description small {
             opacity: 1;
         }
         footer {
             text-align: center;
+        }
+        .h2 {
+            border: none;
+            padding: 20px 0px;
+            background: transparent;
+            width: 230px;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -53,9 +69,9 @@
    <h2> Բարև  <span th:text="${userName}"></span>! </h2>
     <nav role='navigation' class="site-nav show">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Դուրս գալ</a></li>
+            <li><a href="/searching">Որոնել</a></li>
+            <li><a href="#">Խմագրություն</a></li>
         </ul>
     </nav>
 </header>

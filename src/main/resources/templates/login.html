@@ -21,8 +21,6 @@
         }
 
         body {
-
-
             background-size: cover;
             font-family: Verdana;
             fon-size: 0.9em;
@@ -105,17 +103,22 @@
             background: #bfc0c0;
             transition: all 0.4s ease-out;
         }
+        .alert-alert-info {
+            text-align: center;
+            color: #767676;
+            padding: 20px 0px;
+        }
 
     </style>
 </head>
 <body>
 <div id="loginform">
     <div th:if="${param.error}">
-        <div class="alert alert-danger">Սխալ անուն կամ գաղտնաբառ
+        <div class="alert-alert-info">Սխալ անուն կամ գաղտնաբառ
         </div>
     </div>
     <div th:if="${param.logout}">
-        <div class="alert alert-info">Դուք դուրս եք եկել</div>
+        <div class="alert-alert-info">Դուք դուրս եք եկել</div>
     </div>
     <form th:action="@{/login/user}" th:object="${user}" method="post">
 

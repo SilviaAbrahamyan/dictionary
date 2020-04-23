@@ -106,21 +106,26 @@
             background: #bfc0c0;
             transition: all 0.4s ease-out;
         }
+        .alert-alert-info {
+            text-align: center;
+            color: #767676;
+            padding: 20px 0px;
+        }
     </style>
 </head>
 <body>
 <div id="loginform">
     <div th:if="${param.success}">
-        <div class="alert alert-info">Դուք հաջողությամբ գրանցվել եք</div>
+        <div class="alert-alert-info">Դուք հաջողությամբ գրանցվել եք</div>
     </div>
     <div th:if="${param.username}">
-        <div class="alert alert-info">Օգտագործողի անունը գոյություն ունի, կրկին փորձեք</div>
+        <div class="alert-alert-info">Օգտագործողի անունը գոյություն ունի, կրկին փորձեք</div>
     </div>
     <div th:if="${param.email}">
-        <div class="alert alert-info">Էլ.Փոստ գոյություն ունի, կրկին փորձեք</div>
+        <div class="alert-alert-info">Էլ.Փոստ գոյություն ունի, կրկին փորձեք</div>
     </div>
     <div th:if="${param.password}">
-        <div class="alert alert-info">Գաղտնաբառը համապատասխան չէ</div>
+        <div class="alert-alert-info">Գաղտնաբառը համապատասխան չէ</div>
     </div>
     <form th:action="@{/registration/user}" th:object="${user}" method="post">
     <div id="inputlbl">

@@ -19,6 +19,7 @@ public class UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+    private   int i = 0;
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -40,7 +41,7 @@ public class UserService {
         user.setPassword(user.getPassword());
        // user.setConfirmPassword(new BCryptPasswordEncoder().encode(user.getPasswordConfirm()));
         user.setConfirmPassword(user.getPasswordConfirm());
-        int i = 0;
+
         if (i == 0){
         user.setEnable(++i);
         }

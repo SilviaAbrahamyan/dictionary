@@ -9,9 +9,9 @@ public class MainController {
 
 
     @GetMapping("/")
-  public String root() {
-      return "home";
-  }
+    public String root() {
+        return "home";
+    }
 
     @GetMapping("/home")
     public String login(Model model) {

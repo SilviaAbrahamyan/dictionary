@@ -44,18 +44,12 @@ public class LoginController {
 
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request,
-                         HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext()
-                .getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/";
+    public String logout() {
+        return "redirect:/login?logout";
     }
 
     @PostMapping("/user")
-    public String login(@RequestParam(name="error",required=false) String error,
+    public String login(
                         @RequestParam(name="username") String username,
                         @RequestParam(name="password") String password,
                         ModelMap model) {
