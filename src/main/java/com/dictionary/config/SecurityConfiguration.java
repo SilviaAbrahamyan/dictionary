@@ -37,6 +37,8 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/example/**")
                 .permitAll()
+                .antMatchers("/edit/**")
+                .permitAll()
                 .antMatchers("/autocomplete/**")
                 .permitAll()
                 .antMatchers("/home/**")
@@ -54,6 +56,7 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password");
 
+        http.csrf().disable();
     }
 
     @Override
