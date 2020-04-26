@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ import java.util.List;
 public class HomeController {
     List<String> search;
     String s;
+    String username ;
     @Autowired
     public DictionaryService dictionaryService;
 
@@ -33,6 +35,7 @@ public class HomeController {
 
     @RequestMapping(value = "/personalpage")
     public ModelAndView showRegistrationForm(@RequestParam(name = "userName") String userName) {
+        userName = userName;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userName", userName);
         modelAndView.setViewName("personalpage");
@@ -85,12 +88,31 @@ public class HomeController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String yourMethod(@RequestParam(name = "notes") String[] notes) {
         int i = 0;
+        List<String> stringList = new ArrayList<>();
         List<String> search = dictionaryService.search(s);
         for (String data : notes) {
+            stringList.add(data);
             System.out.println("Your Data =>" + data);
-            Words words = new Words(s, data, ++i);
-            wordsService.add(words);
+          //  Words words = new Words(s, data, ++i);
+          //  wordsService.add(words);
         }
+        boolean found = false;
+        for(String object1 : stringList){
+            for(String object2: search){
+                if(object1.replaceAll("<br>", "").trim().equals(object2.trim())){
+                    found = true;
+                    //also do something
+                    break;
+                }
+            }
+            if(!found){
+                Words words = new Words(s, object1, ++i);
+                  wordsService.add(words);
+            }
+            found = false;
+        }
+
+
         return "redirect:/search1?word=" + s;
     }
 
