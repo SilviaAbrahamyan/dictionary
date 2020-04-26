@@ -261,7 +261,7 @@
         </form>
     </div>
 
-    <div th:if="${param.success} or ${response == 'success'}">
+
         <button class="btn" id="myBtn">Խմբագրել</button>
         <table class="list list-view-filter">
             <tr th:each="survey,iter  : ${survey}">
@@ -297,8 +297,6 @@
                 </th:block>
             </tr>
         </table>
-
-    </div>
 </div>
 <script language="javascript">
 

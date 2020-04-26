@@ -13,7 +13,7 @@ public interface DictionaryRepository extends JpaRepository<Dictionary, String> 
 
 
     List<Dictionary> findByWord(String word);
-
+    Dictionary findByWordAndType(String word, int type);
     List<Dictionary> findByWordLike(@Param("word") String word);
 
 }

@@ -129,7 +129,7 @@ private List<String> getMeaning(List<com.dictionary.models.Dictionary> d){
         return meanings;
     }
 
-    public void add(com.dictionary.models.Dictionary dictionaryEntry) {
+    public void add(Dictionary dictionaryEntry) {
         dictionaryRepository.save(dictionaryEntry);
    }
 
@@ -155,5 +155,11 @@ private List<String> getMeaning(List<com.dictionary.models.Dictionary> d){
         dictionaryEntries.clear();
         dictionaryEntries.addAll(set);
         return dictionaryEntries;
+    }
+
+    public  void update(String meaning, String word, int type){
+        Dictionary byWordAndType = dictionaryRepository.findByWordAndType(word, type);
+        byWordAndType.setMean(meaning);
+        dictionaryRepository.save(byWordAndType);
     }
 }

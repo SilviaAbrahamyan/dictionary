@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<style>  body {
+    font-family: "Helvetica";
+    background: #d3deea;
+}
+.search-btn {
+
+    width: 30px;
+    height: 32px;
+    border: 1px solid #bfc0c0;
+    background: #bfc0c0;
+    text-align: center;
+    color: #ededed;
+    font-size: 1em;
+    outline: none;
+    display: block;
+    margin: auto;
+}
+.search-btn:hover {
+    background: #ededed;
+    border: 1px solid #ededed;
+    color: #bfc0c0;
+    transition: all 0.2s ease;
+}
+</style>
+<body>
+    <table border="1">
+        <tr>
+            <th>Բառ</th>
+            <th>Բացատրություն</th>
+            <th>Տեսակ</th>
+            <th>Հաստատել</th>
+        </tr>
+        <tr th:each="resp, iter: ${respone}">
+            <td th:text="${resp.word}">Word</td>
+            <td th:text="${resp.meaning}">Meaning</td>
+            <td>
+                <th:block th:switch="${iter.index+1}">
+                    <div th:case="'1'">
+                        <label><p id="1" style="white-space: pre;"
+                                  th:text="բացատրություն"></p>
+                        </label>
+                    </div>
+                    <div th:case="'2'">
+                        <label><p style="white-space: pre;" th:text="հոմանիշներ"></p>
+                        </label>
+                    </div>
+                    <div th:case="'3'">
+                        <label>
+                            <p style="white-space: pre;" th:text="հականիշներ"></p>
+                        </label>
+                    </div>
+                    <div th:case="'4'">
+                        <label><p style="white-space: pre;"
+                                  th:text="ռուսերեն"></p>
+                        </label>
+                    </div>
+                    <div th:case="'5'">
+                        <label><p style="white-space: pre;"
+                                  th:text="անգլերեն"></p>
+                        </label>
+                    </div>
+                    <div th:case="'6'">
+                        <label><p style="white-space: pre;" th:text="դարձվածքներ"></p>
+                        </label>
+                    </div>
+                </th:block>
+            </td>
+            <td>
+                <form action="#" th:action="@{/wordedite/} + ${resp.type}+'/'+${resp.word}" method="get">
+                    <button class="search-btn" th:id="'table_entry_childs_button_' + ${iter.index+1}" type="submit">
+                        <i class="fa fa-search"></i>
+                        <span id="rock">✔</span>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

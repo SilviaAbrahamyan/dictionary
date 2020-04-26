@@ -1,7 +1,10 @@
 package com.dictionary.controllers;
 
 import com.dictionary.models.User;
+import com.dictionary.models.Words;
 import com.dictionary.services.DictionaryService;
+import com.dictionary.services.WordsService;
+import com.dictionary.util.ClientFormWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,9 @@ public class HomeController {
     String s;
     @Autowired
     public DictionaryService dictionaryService;
+
+    @Autowired
+    public WordsService wordsService;
 
     @RequestMapping(value = "/personalpage")
     public ModelAndView showRegistrationForm(@RequestParam(name = "userName") String userName) {
@@ -78,11 +84,35 @@ public class HomeController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String yourMethod(@RequestParam(name = "notes") String[] notes) {
+        int i = 0;
+        List<String> search = dictionaryService.search(s);
         for (String data : notes) {
             System.out.println("Your Data =>" + data);
+            Words words = new Words(s, data, ++i);
+            wordsService.add(words);
         }
         return "redirect:/search1?word=" + s;
     }
 
+
+    @RequestMapping(value = "/editing")
+    public ModelAndView editform() {
+        System.out.println(wordsService.findall().toString());
+        ClientFormWrapper clientFormWrapper = new ClientFormWrapper();
+        clientFormWrapper.setClientList(wordsService.findall());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("respone", clientFormWrapper.getClientList());
+        modelAndView.setViewName("edit");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/wordedite/{serviceId}/{wordId}", method = RequestMethod.GET)
+    public String wordEdit(@PathVariable int serviceId, @PathVariable  String wordId) {
+        System.out.println(serviceId);
+        String meaing = wordsService.findbyWordAndType(wordId, serviceId);
+        dictionaryService.update(meaing, wordId, serviceId);
+        wordsService.delete(wordId,serviceId);
+        return "redirect:/editing";
+    }
 
 }
