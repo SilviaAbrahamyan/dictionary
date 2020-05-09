@@ -279,7 +279,11 @@
     </div>
 
 
-        <button class="btn" id="myBtn">Խմբագրել</button>
+    <div th:if="${param.success} or ${response == 'success'}">
+        <form class="search" th:action="@{/edit}">
+            <button class="btn">Խմբագրել</button>
+        </form>
+    </div>
 
 
     <h2><a th:text="${word}"></a>

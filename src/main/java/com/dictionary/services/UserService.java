@@ -59,4 +59,12 @@ public class UserService {
         }
     }
 
+    public boolean getRole(String username){
+        Role byUsername = roleRepository.findByUsername(username);
+        if (byUsername.getAuthority().equals("ROLE_USER")) {
+            return false;
+        }
+        return true;
+    }
+
 }

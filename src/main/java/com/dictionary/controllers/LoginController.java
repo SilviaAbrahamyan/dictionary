@@ -58,6 +58,10 @@ public class LoginController {
         for(User user: loginSize){
             String encode = new BCryptPasswordEncoder().encode(password);
             if(user.getPassword().equals(password)){
+                if(userService.getRole(username)){
+                    model.addAttribute("userName", user.getUsername());
+                    return "redirect:/adminpage";
+                }
                 model.addAttribute("userName", user.getUsername());
                 return "redirect:/personalpage";
 
