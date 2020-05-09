@@ -35,6 +35,7 @@
             <th>Բացատրություն</th>
             <th>Տեսակ</th>
             <th>Հաստատել</th>
+            <th>Ջնջել</th>
         </tr>
         <tr th:each="resp, iter: ${respone}">
             <td th:text="${resp.word}">Word</td>
@@ -76,6 +77,14 @@
                     <button class="search-btn" th:id="'table_entry_childs_button_' + ${iter.index+1}" type="submit">
                         <i class="fa fa-search"></i>
                         <span id="rock">✔</span>
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/delete/} + ${resp.type}+'/'+${resp.word}" method="get">
+                    <button class="search-btn" th:id="'table_entry_childs_button_' + ${iter.index+1}" type="submit">
+                        <i class="fa fa-search"></i>
+                        <span id="rock1">❌</span>
                     </button>
                 </form>
             </td>

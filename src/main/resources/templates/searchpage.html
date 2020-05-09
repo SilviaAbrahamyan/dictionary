@@ -162,6 +162,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script type="text/javascript">
     $(function () {
         $("#autocomplete-input").autocomplete({
@@ -182,9 +183,26 @@
             source: "plantNamesAutocomplete",
         });
     });
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('a.say').on('click', function (e) {
+            e.preventDefault();
+            console.log('SWF');
+            var text = '${word}';
+            console.log(text);
+            var url = "https://translate.google.com/translate_tts?tl=hy&amp;q=" + text+ "client=tw-ob";
+            $('audio').attr('src', url).get(0).play();
+        });
+    });
+
 </script>
 
+
+<script></script>
 <body>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=HoQkAB09"></script>
 <!-- The Modal -->
 <div th:if="${resp == 'edited'}">
     <div class="alert-alert-info">Խմբագրությունը ուղարկվել է հաստատման</div>
@@ -198,8 +216,7 @@
             <button class="btn" id="Btn" style="text-align: center" >Ուղարկել խմբագրման</button>
             <table class="list list-view-filter">
                 <tr th:each="survey,iter  : ${survey}">
-                    <th:block th:switch="${iter.index+1}">
-                        <div th:case="'1'">
+                    <th:block th:switch="${iter.index+1}"><div th:case="'1'">
                             <textarea class="form-control" rows="14" cols="75"
                                       style="margin-top: 10px;" placeholder="Sonstige Bemerkungen"
                                       name="notes" th:inline="text" th:text="${survey}">
@@ -263,6 +280,11 @@
 
 
         <button class="btn" id="myBtn">Խմբագրել</button>
+
+
+    <h2><a th:text="${word}"></a>
+    <a href="#" class="say" value = "${word}">🔊</a></h2>
+    <audio src="" class="speech" type ="hidden"></audio>
         <table class="list list-view-filter">
             <tr th:each="survey,iter  : ${survey}">
                 <th:block th:switch="${iter.index+1}">
@@ -300,7 +322,6 @@
 </div>
 <script language="javascript">
 
-
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
@@ -318,5 +339,6 @@
 
 
 </script>
+
 </body>
 </html>

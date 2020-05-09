@@ -134,6 +134,14 @@ public class HomeController {
         String meaing = wordsService.findbyWordAndType(wordId, serviceId);
         dictionaryService.update(meaing, wordId, serviceId);
         wordsService.delete(wordId,serviceId);
+     //   Locale.
+        return "redirect:/editing";
+    }
+
+    @RequestMapping(value = "/delete/{serviceId}/{wordId}", method = RequestMethod.GET)
+    public String delete(@PathVariable int serviceId, @PathVariable  String wordId) {
+        System.out.println(serviceId);
+        wordsService.delete(wordId,serviceId);
         return "redirect:/editing";
     }
 
